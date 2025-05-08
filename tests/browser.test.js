@@ -40,6 +40,9 @@ describe('Clicking "Poppa stacken!"', () => {
     it('should open an alert if stack is empty', async () => {
         let pop = await driver.findElement(By.id('pop'));
         await pop.click();
+        let alert = await driver.switchTo().alert();
+        await alert.accept();
+        await pop.click();
         let alertMessage = await driver.switchTo().alert().getText();
         expect(alertMessage).toEqual("Finns inget att poppa :(");
     });
