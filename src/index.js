@@ -10,7 +10,13 @@ window.onload = function () {
     var display = document.getElementById('top_of_stack');
 
     pop.addEventListener("click", function() {
-        var text = "Tog bort " + stack.pop();
+        const popped = stack.pop();
+        let text;
+        if (popped === undefined) {
+            text = "Finns inget att poppa :("
+        } else {
+            text = "Tog bort " + popped;
+        }
         alert(text);
     });
 

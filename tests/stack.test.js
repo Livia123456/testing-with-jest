@@ -22,5 +22,5 @@ test('peek on stack after popping returns current top element', () => {
     stack.push("hej");
     stack.push("Hallå");
     expect(stack.pop()).toBeDefined();
-    expect(stack.peek()).toBe("Hej");
+    expect(stack.peek()).toBe("hej");
 });
