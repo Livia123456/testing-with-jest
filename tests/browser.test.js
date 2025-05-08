@@ -1,4 +1,5 @@
 const { Builder, By, until } = require('selenium-webdriver');
+const { experiments } = require('webpack');
 require('geckodriver');
 
 // Här anger vi var testfilen ska hämtas. De konstiga replaceAll-funktionerna ersätter
@@ -32,5 +33,14 @@ describe('Clicking "Pusha till stacken"', () => {
         let alert = await driver.switchTo().alert();
         await alert.sendKeys("Bananer");
         await alert.accept();
+    });
+});
+
+describe('Clicking "Poppa stacken!"', () => {
+    it('should open an alert if stack is empty', async () => {
+        let pop = await driver.findElement(By.id('pop'));
+        await pop.click();
+        let alertMessage = await driver.switchTo().alert().getText();
+        expect(alertMessage).toEqual("Finns inget att poppa :(");
     });
 });
